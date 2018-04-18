@@ -3,6 +3,12 @@ A library to provide access to local storage in Blazor applications
 
 ### Usage
 
+You can install from Nuget using the following command:
+
+`Install-Package BlazoredLocalStorage`
+
+Or via the Visual Studio package manger.
+
 You will need to add the following using statement
 
 `using Blazored.Js;`
