@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
@@ -13,14 +13,13 @@
     <PackageId>BlazoredLocalStorage</PackageId>
     <Version>0.1.0</Version>
     <Authors>Chris Sainty</Authors>
-    <Product>Blazored Local Storage</Product>
     <Description>A library to provide access to local storage in Blazor applications</Description>
-    <Copyright>Chris Sainty</Copyright>
+    <Copyright>Copyright 2018 (c) Chris Sainty. All rights reserved.</Copyright>
     <PackageLicenseUrl>https://github.com/chrissainty/BlazoredLocalStorage/blob/master/LICENSE</PackageLicenseUrl>
     <PackageProjectUrl>https://github.com/chrissainty/BlazoredLocalStorage</PackageProjectUrl>
     <RepositoryUrl>https://github.com/chrissainty/BlazoredLocalStorage</RepositoryUrl>
-    <RepositoryType>Git</RepositoryType>
-    <PackageTags>blazor localstorage</PackageTags>
+    <PackageTags>blazor localstorage csharp</PackageTags>
+    <Company />
   </PropertyGroup>
 
   <ItemGroup>
