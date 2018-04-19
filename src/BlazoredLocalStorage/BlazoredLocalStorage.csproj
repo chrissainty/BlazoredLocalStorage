@@ -1,0 +1,39 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <OutputType>library</OutputType>
+    <IsPackable>true</IsPackable>
+    <BlazorLinkOnBuild>false</BlazorLinkOnBuild>
+
+    <!-- This custom package feed is required only when using nightly builds of Blazor -->
+    <RestoreSources>https://dotnet.myget.org/F/blazor-dev/api/v3/index.json;$(RestoreSources)</RestoreSources>
+    <AssemblyName>Blazored.Js</AssemblyName>
+    <RootNamespace>Blazored.Js</RootNamespace>
+    <PackageId>BlazoredLocalStorage</PackageId>
+    <Version>0.1.0</Version>
+    <Authors>Chris Sainty</Authors>
+    <Product>Blazored Local Storage</Product>
+    <Description>A library to provide access to local storage in Blazor applications</Description>
+    <Copyright>Chris Sainty</Copyright>
+    <PackageLicenseUrl>https://github.com/chrissainty/BlazoredLocalStorage/blob/master/LICENSE</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/chrissainty/BlazoredLocalStorage</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/chrissainty/BlazoredLocalStorage</RepositoryUrl>
+    <RepositoryType>Git</RepositoryType>
+    <PackageTags>blazor localstorage</PackageTags>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- .js/.css files will be referenced via <script>/<link> tags; other content files will just be included in the app's 'dist' directory without any tags referencing them -->
+    <EmbeddedResource Include="content\**\*.js" LogicalName="blazor:js:%(RecursiveDir)%(Filename)%(Extension)" />
+    <EmbeddedResource Include="content\**\*.css" LogicalName="blazor:css:%(RecursiveDir)%(Filename)%(Extension)" />
+    <EmbeddedResource Include="content\**" Exclude="**\*.js;**\*.css" LogicalName="blazor:file:%(RecursiveDir)%(Filename)%(Extension)" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.1.0-preview2-final" PrivateAssets="all" />
+    <PackageReference Include="Microsoft.AspNetCore.Blazor.Browser" Version="0.2.0-preview1-10195" />
+    <PackageReference Include="Microsoft.AspNetCore.Blazor.Build" Version="0.2.0-preview1-10195" />
+  </ItemGroup>
+
+</Project>
