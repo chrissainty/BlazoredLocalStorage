@@ -1,7 +1,7 @@
 # BlazoredLocalStorage
 A library to provide access to local storage in Blazor applications
 
-![NuGet](https://img.shields.io/nuget/v/BlazoredLocalStorage.svg?style=flat-square)
+[![NuGet](https://img.shields.io/nuget/v/BlazoredLocalStorage.svg?style=flat-square)](https://www.nuget.org/packages/BlazoredLocalStorage/)
 
 ### Usage
 
