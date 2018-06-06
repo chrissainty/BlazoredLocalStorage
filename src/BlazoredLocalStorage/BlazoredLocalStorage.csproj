@@ -8,8 +8,8 @@
 
     <!-- This custom package feed is required only when using nightly builds of Blazor -->
     <RestoreSources>https://dotnet.myget.org/F/blazor-dev/api/v3/index.json;$(RestoreSources)</RestoreSources>
-    <AssemblyName>Blazored.Js</AssemblyName>
-    <RootNamespace>Blazored.Js</RootNamespace>
+    <AssemblyName>Blazored.LocalStorage</AssemblyName>
+    <RootNamespace>Blazored.Storage</RootNamespace>
     <PackageId>BlazoredLocalStorage</PackageId>
     <Version>0.2.0</Version>
     <Authors>Chris Sainty</Authors>
@@ -18,7 +18,7 @@
     <PackageLicenseUrl>https://github.com/chrissainty/BlazoredLocalStorage/blob/master/LICENSE</PackageLicenseUrl>
     <PackageProjectUrl>https://github.com/chrissainty/BlazoredLocalStorage</PackageProjectUrl>
     <RepositoryUrl>https://github.com/chrissainty/BlazoredLocalStorage</RepositoryUrl>
-    <PackageTags>blazor localstorage csharp</PackageTags>
+    <PackageTags>blazor localstorage csharp blazored</PackageTags>
     <Company />
   </PropertyGroup>
 

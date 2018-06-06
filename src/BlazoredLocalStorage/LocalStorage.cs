@@ -1,29 +1,45 @@
 ﻿using Microsoft.AspNetCore.Blazor;
 using Microsoft.AspNetCore.Blazor.Browser.Interop;
+using System;
 
-namespace Blazored.Js
+namespace Blazored.Storage
 {
-    public class LocalStorage
+    public class LocalStorage : ILocalStorage
     {
-        public void Save(string identifier, object data)
+        public void SetItem(string identifier, object data)
         {
+            if (string.IsNullOrEmpty(identifier))
+                throw new ArgumentNullException(nameof(identifier));
+
             var serialisedData = JsonUtil.Serialize(data);
-            RegisteredFunction.Invoke<bool>("Blazored.Js.LocalStorage.Save", identifier, serialisedData);
+            RegisteredFunction.Invoke<bool>("Blazored.Storage.LocalStorage.SetItem", identifier, serialisedData);
         }
 
-        public T Get<T>(string identifier)
+        public T GetItem<T>(string identifier)
         {
-            var serialisedData = RegisteredFunction.Invoke<string>("Blazored.Js.LocalStorage.Get", identifier);
-            
+            if (string.IsNullOrEmpty(identifier))
+                throw new ArgumentNullException(nameof(identifier));
+
+            var serialisedData = RegisteredFunction.Invoke<string>("Blazored.Storage.LocalStorage.GetItem", identifier);
+
             if (serialisedData == null)
                 return default(T);
-            
+
             return JsonUtil.Deserialize<T>(serialisedData);
         }
 
-        public void Remove(string identifier)
+        public void RemoveItem(string identifier)
         {
-            RegisteredFunction.Invoke<string>("Blazored.Js.LocalStorage.Remove", identifier);
+            if (string.IsNullOrEmpty(identifier))
+                throw new ArgumentNullException(nameof(identifier));
+
+            RegisteredFunction.Invoke<string>("Blazored.Storage.LocalStorage.RemoveItem", identifier);
         }
+
+        public void Clear() => RegisteredFunction.Invoke<bool>("Blazored.Storage.LocalStorage.Clear");
+
+        public int Length() => RegisteredFunction.Invoke<int>("Blazored.Storage.LocalStorage.Length");
+
+        public string Key(int index) => RegisteredFunction.Invoke<string>("Blazored.Storage.LocalStorage.Key", index);
     }
 }
