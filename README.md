@@ -3,7 +3,7 @@ A library to provide access to local storage in Blazor applications
 
 [![NuGet](https://img.shields.io/nuget/v/BlazoredLocalStorage.svg?style=flat-square)](https://www.nuget.org/packages/BlazoredLocalStorage/)
 
-### Usage
+### Installing
 
 You can install from Nuget using the following command:
 
@@ -11,27 +11,40 @@ You can install from Nuget using the following command:
 
 Or via the Visual Studio package manger.
 
-You will need to add the following using statement
+### Setup
 
-`using Blazored.Js;`
+First, you will need to register local storage with the service provider in your program.cs file
 
-You can then use the following static methods on the `LocalStorage` class.
-
-**Save To Local Storage**
 ```c#
-var stringToSave = "Save me to Local Storage";
+var serviceProvider = new BrowserServiceProvider(services =>
+{
+    services.AddLocalStorage();
+});
+``` 
 
-LocalStorage.Save("myIdentifier", stringToSave);
+### Usage
+This is an example of using local storage in a .cshtml file 
+
+```c#
+@inject ILocalStorage localStorage
+
+@functions {
+
+    protected override void OnInit()
+    {
+        localStorage.SetItem("name", "John Smith");
+        var name = localStorage.GetItem<string>("name");
+    }
+
+}
 ```
 
-**Get From Local Storage**
-```c#
-var stringSavedEarlier = LocalStorage.Get<string>("myIdentifier");
-```
+The APIs available are
+ - SetItem()
+ - GetItem()
+ - RemoveItem()
+ - Clear()
+ - Length()
+ - Key()
 
-**Remove From Local Storage**
-```c#
-LocalStorage.Remove("myIdentifier");
-```
-
-The BlazoredLocalStorage methods will handle the serialisation and deserialisation of the data for you. 
+Blazored.LocalStorage methods will handle the serialisation and de-serialisation of the data for you.
