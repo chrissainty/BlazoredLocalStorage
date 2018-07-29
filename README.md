@@ -47,4 +47,6 @@ The APIs available are
  - Length()
  - Key()
 
-Note: Blazored.LocalStorage methods will handle the serialisation and de-serialisation of the data for you.
+ **All APIs are now _async_**
+
+**Note:** Blazored.LocalStorage methods will handle the serialisation and de-serialisation of the data for you.
