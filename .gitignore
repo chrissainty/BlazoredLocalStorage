@@ -286,3 +286,7 @@ __pycache__/
 *.btm.cs
 *.odx.cs
 *.xsd.cs
+
+# Ignore js files in the content folder
+src/BlazoredLocalStorage/content/*.js
+src/BlazoredLocalStorage/content/*.js.map

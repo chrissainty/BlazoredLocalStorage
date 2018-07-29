@@ -6,12 +6,10 @@
     <IsPackable>true</IsPackable>
     <BlazorLinkOnBuild>false</BlazorLinkOnBuild>
 
-    <!-- This custom package feed is required only when using nightly builds of Blazor -->
-    <RestoreSources>https://dotnet.myget.org/F/blazor-dev/api/v3/index.json;$(RestoreSources)</RestoreSources>
     <AssemblyName>Blazored.LocalStorage</AssemblyName>
     <RootNamespace>Blazored.Storage</RootNamespace>
     <PackageId>BlazoredLocalStorage</PackageId>
-    <Version>0.2.0</Version>
+    <Version>0.3.0</Version>
     <Authors>Chris Sainty</Authors>
     <Description>A library to provide access to local storage in Blazor applications</Description>
     <Copyright>Copyright 2018 (c) Chris Sainty. All rights reserved.</Copyright>
@@ -20,6 +18,7 @@
     <RepositoryUrl>https://github.com/chrissainty/BlazoredLocalStorage</RepositoryUrl>
     <PackageTags>blazor localstorage csharp blazored</PackageTags>
     <Company />
+    <TypeScriptToolsVersion>2.8</TypeScriptToolsVersion>
   </PropertyGroup>
 
   <ItemGroup>
@@ -30,8 +29,20 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.Blazor.Browser" Version="0.3.0" />
-    <PackageReference Include="Microsoft.AspNetCore.Blazor.Build" Version="0.3.0" />
+    <EmbeddedResource Remove="content\blazoredLocalStorage.ts" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="content\blazoredLocalStorage.ts" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Blazor.Browser" Version="0.5.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Blazor.Build" Version="0.5.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <TypeScriptCompile Include="content\blazoredLocalStorage.ts" />
   </ItemGroup>
 
 </Project>

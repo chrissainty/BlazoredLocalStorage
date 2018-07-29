@@ -1,45 +1,44 @@
-﻿using Microsoft.AspNetCore.Blazor;
-using Microsoft.AspNetCore.Blazor.Browser.Interop;
-using System;
+﻿using System;
+using Microsoft.JSInterop;
+using System.Threading.Tasks;
 
 namespace Blazored.Storage
 {
     public class LocalStorage : ILocalStorage
     {
-        public void SetItem(string identifier, object data)
+        public Task SetItem(string key, object data)
         {
-            if (string.IsNullOrEmpty(identifier))
-                throw new ArgumentNullException(nameof(identifier));
+            if (string.IsNullOrEmpty(key))
+                throw new ArgumentNullException(nameof(key));
 
-            var serialisedData = JsonUtil.Serialize(data);
-            RegisteredFunction.Invoke<bool>("Blazored.Storage.LocalStorage.SetItem", identifier, serialisedData);
+            return JSRuntime.Current.InvokeAsync<object>("blazored.localStorage.setItem", key, Json.Serialize(data));
         }
 
-        public T GetItem<T>(string identifier)
+        public async Task<T> GetItem<T>(string key)
         {
-            if (string.IsNullOrEmpty(identifier))
-                throw new ArgumentNullException(nameof(identifier));
+            if (string.IsNullOrEmpty(key))
+                throw new ArgumentNullException(nameof(key));
 
-            var serialisedData = RegisteredFunction.Invoke<string>("Blazored.Storage.LocalStorage.GetItem", identifier);
+            var serialisedData = await JSRuntime.Current.InvokeAsync<string>("blazored.localStorage.getItem", key);
 
             if (serialisedData == null)
                 return default(T);
 
-            return JsonUtil.Deserialize<T>(serialisedData);
+            return Json.Deserialize<T>(serialisedData);
         }
 
-        public void RemoveItem(string identifier)
+        public Task RemoveItem(string key)
         {
-            if (string.IsNullOrEmpty(identifier))
-                throw new ArgumentNullException(nameof(identifier));
+            if (string.IsNullOrEmpty(key))
+                throw new ArgumentNullException(nameof(key));
 
-            RegisteredFunction.Invoke<string>("Blazored.Storage.LocalStorage.RemoveItem", identifier);
+            return JSRuntime.Current.InvokeAsync<string>("blazored.localStorage.removeItem", key);
         }
 
-        public void Clear() => RegisteredFunction.Invoke<bool>("Blazored.Storage.LocalStorage.Clear");
+        public Task Clear() => JSRuntime.Current.InvokeAsync<bool>("blazored.localStorage.clear");
 
-        public int Length() => RegisteredFunction.Invoke<int>("Blazored.Storage.LocalStorage.Length");
+        public Task<int> Length() => JSRuntime.Current.InvokeAsync<int>("blazored.localStorage.length");
 
-        public string Key(int index) => RegisteredFunction.Invoke<string>("Blazored.Storage.LocalStorage.Key", index);
+        public Task<string> Key(int index) => JSRuntime.Current.InvokeAsync<string>("blazored.localStorage.key", index);
     }
 }

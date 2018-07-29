@@ -5,7 +5,9 @@ VisualStudioVersion = 15.0.26124.0
 MinimumVisualStudioVersion = 15.0.26124.0
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{85CD5254-8617-40B0-961E-5A8C89440121}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazoredLocalStorage", "src\BlazoredLocalStorage\BlazoredLocalStorage.csproj", "{8564B969-71A9-4562-AC10-FEB23C07E4BD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazoredLocalStorage", "src\BlazoredLocalStorage\BlazoredLocalStorage.csproj", "{8564B969-71A9-4562-AC10-FEB23C07E4BD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClientSideBlazor", "samples\ClientSideBlazor\ClientSideBlazor.csproj", "{29C3001C-AED8-4BD6-AFD6-03B9F9442E33}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,9 +17,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 		Release|x64 = Release|x64
 		Release|x86 = Release|x86
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{8564B969-71A9-4562-AC10-FEB23C07E4BD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -32,8 +31,26 @@ Global
 		{8564B969-71A9-4562-AC10-FEB23C07E4BD}.Release|x64.Build.0 = Release|Any CPU
 		{8564B969-71A9-4562-AC10-FEB23C07E4BD}.Release|x86.ActiveCfg = Release|Any CPU
 		{8564B969-71A9-4562-AC10-FEB23C07E4BD}.Release|x86.Build.0 = Release|Any CPU
+		{29C3001C-AED8-4BD6-AFD6-03B9F9442E33}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{29C3001C-AED8-4BD6-AFD6-03B9F9442E33}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{29C3001C-AED8-4BD6-AFD6-03B9F9442E33}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{29C3001C-AED8-4BD6-AFD6-03B9F9442E33}.Debug|x64.Build.0 = Debug|Any CPU
+		{29C3001C-AED8-4BD6-AFD6-03B9F9442E33}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{29C3001C-AED8-4BD6-AFD6-03B9F9442E33}.Debug|x86.Build.0 = Debug|Any CPU
+		{29C3001C-AED8-4BD6-AFD6-03B9F9442E33}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{29C3001C-AED8-4BD6-AFD6-03B9F9442E33}.Release|Any CPU.Build.0 = Release|Any CPU
+		{29C3001C-AED8-4BD6-AFD6-03B9F9442E33}.Release|x64.ActiveCfg = Release|Any CPU
+		{29C3001C-AED8-4BD6-AFD6-03B9F9442E33}.Release|x64.Build.0 = Release|Any CPU
+		{29C3001C-AED8-4BD6-AFD6-03B9F9442E33}.Release|x86.ActiveCfg = Release|Any CPU
+		{29C3001C-AED8-4BD6-AFD6-03B9F9442E33}.Release|x86.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{8564B969-71A9-4562-AC10-FEB23C07E4BD} = {85CD5254-8617-40B0-961E-5A8C89440121}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {CC215926-2EF4-4B3C-B3E0-1AD96BA8841F}
 	EndGlobalSection
 EndGlobal

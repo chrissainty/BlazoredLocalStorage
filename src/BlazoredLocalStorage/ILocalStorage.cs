@@ -1,12 +1,14 @@
-﻿namespace Blazored.Storage
+﻿using System.Threading.Tasks;
+
+namespace Blazored.Storage
 {
     public interface ILocalStorage
     {
-        void SetItem(string identifier, object data);
-        T GetItem<T>(string identifier);
-        void RemoveItem(string identifier);
-        void Clear();
-        int Length();
-        string Key(int index);
+        Task SetItem(string identifier, object data);
+        Task<T> GetItem<T>(string identifier);
+        Task RemoveItem(string identifier);
+        Task Clear();
+        Task<int> Length();
+        Task<string> Key(int index);
     }
 }

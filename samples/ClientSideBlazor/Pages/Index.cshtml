@@ -1,0 +1,100 @@
+﻿@page "/"
+@inject Blazored.Storage.ILocalStorage localStorage
+
+<h1>Hello, world!</h1>
+
+Welcome to your new app.
+
+<SurveyPrompt Title="How is Blazor working for you?" />
+
+<div class="row">
+    <div class="col-md-6">
+        <strong>Save to local storage</strong>
+    </div>
+    <div class="col-md-6">
+        <input type="text" placeholder="Enter your name" onchange=@handleNameInput />
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-6">
+        <strong>Read from local storage</strong>
+    </div>
+    <div class="col-md-6">
+        @nameFromLocalStorage
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-6">
+        <strong>Remove from local storage</strong>
+    </div>
+    <div class="col-md-6">
+        <button onclick=@RemoveName>Remove Name</button>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-6">
+        <strong>Clear all local storage</strong>
+    </div>
+    <div class="col-md-6">
+        <button onclick=@ClearLocalStorage>Clear</button>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-6">
+        <strong>Items in local storage</strong>
+    </div>
+    <div class="col-md-6">
+        @storageLength
+    </div>
+</div>
+
+@functions {   
+
+    private string nameFromLocalStorage { get; set; }
+    private int storageLength { get; set; }
+
+    protected override async Task OnInitAsync()
+    {
+        await GetNameFromLocalStorage();
+        await GetLocalStorageLength();
+    }
+
+    private async Task handleNameInput(UIChangeEventArgs eventArgs)
+    {
+        await localStorage.SetItem("name", (string)eventArgs.Value);
+        await GetNameFromLocalStorage();
+        await GetLocalStorageLength();
+    }
+
+    private async Task GetNameFromLocalStorage()
+    {
+        nameFromLocalStorage = await localStorage.GetItem<string>("name");
+
+        if (string.IsNullOrEmpty(nameFromLocalStorage))
+            nameFromLocalStorage = "Nothing Saved";
+    }
+
+    private async Task RemoveName()
+    {
+        await localStorage.RemoveItem("name");
+        await GetNameFromLocalStorage();
+        await GetLocalStorageLength();
+    }
+
+    private async Task ClearLocalStorage()
+    {
+        await localStorage.Clear();
+        await GetNameFromLocalStorage();
+        await GetLocalStorageLength();
+    }
+
+    private async Task GetLocalStorageLength()
+    {
+        storageLength = await localStorage.Length();
+    }
+
+}
