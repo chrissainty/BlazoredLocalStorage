@@ -13,27 +13,27 @@ Or via the Visual Studio package manger.
 
 ### Setup
 
-First, you will need to register local storage with the service provider in your program.cs file
+First, you will need to register local storage with the service collection in your _startup.cs_ file
 
 ```c#
-var serviceProvider = new BrowserServiceProvider(services =>
+public void ConfigureServices(IServiceCollection services)
 {
     services.AddLocalStorage();
-});
+}
 ``` 
 
 ### Usage
 This is an example of using local storage in a .cshtml file 
 
 ```c#
-@inject ILocalStorage localStorage
+@inject Blazored.Storage.ILocalStorage localStorage
 
 @functions {
 
-    protected override void OnInit()
+    protected override async Task OnInitAsync()
     {
-        localStorage.SetItem("name", "John Smith");
-        var name = localStorage.GetItem<string>("name");
+        await localStorage.SetItem("name", "John Smith");
+        var name = await localStorage.GetItem<string>("name");
     }
 
 }
@@ -47,4 +47,4 @@ The APIs available are
  - Length()
  - Key()
 
-Blazored.LocalStorage methods will handle the serialisation and de-serialisation of the data for you.
+Note: Blazored.LocalStorage methods will handle the serialisation and de-serialisation of the data for you.
