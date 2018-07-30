@@ -20,3 +20,5 @@
         }
     }
 }
+
+window['blazored'] = blazored;

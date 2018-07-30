@@ -9,7 +9,7 @@
     <AssemblyName>Blazored.LocalStorage</AssemblyName>
     <RootNamespace>Blazored.Storage</RootNamespace>
     <PackageId>BlazoredLocalStorage</PackageId>
-    <Version>0.3.0</Version>
+    <Version>0.3.1</Version>
     <Authors>Chris Sainty</Authors>
     <Description>A library to provide access to local storage in Blazor applications</Description>
     <Copyright>Copyright 2018 (c) Chris Sainty. All rights reserved.</Copyright>
