@@ -3,6 +3,8 @@ A library to provide access to local storage in Blazor applications
 
 [![NuGet](https://img.shields.io/nuget/v/BlazoredLocalStorage.svg?style=flat-square)](https://www.nuget.org/packages/BlazoredLocalStorage/)
 
+[![Build Status](https://dev.azure.com/chris0792/chris/_apis/build/status/chrissainty.BlazoredLocalStorage)](https://dev.azure.com/chris0792/chris/_build/latest?definitionId=1)
+
 ### Installing
 
 You can install from Nuget using the following command:
